@@ -210,14 +210,33 @@ img { max-width: 100%; display: block; }
 .project-body { display: grid; gap: 10px; }
 .project-title { margin: 0; font-size: 22px; }
 .project-desc { color: var(--muted); margin: 0; }
-.project-tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.project-tags li {
-  background: rgba(255,255,255,0.06);
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.08);
-  font-size: 13px;
+/* Project tags (fixed to keep shape even with tall cards) */
+.project-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
+
+.project-tags li {
+  display: inline-flex;              /* use flexbox for centering */
+  align-items: center;               /* vertical centering */
+  justify-content: center;           /* horizontal centering */
+  height: 28px;                      /* fixed height for consistent look */
+  min-width: 28px;                   /* ensures circular shape if text is tiny */
+  padding: 0 10px;                   /* horizontal space around text */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;              /* ensures pill/circle shape */
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;                    /* prevent text from floating to the top */
+  white-space: nowrap;               /* keeps tags on one line */
+  text-align: center;
+}
+
 .project-links { display: flex; gap: 12px; align-items: center; }
 .text-link { color: var(--brand); }
 .text-link[aria-disabled="true"] { opacity: 0.5; pointer-events: none; }
